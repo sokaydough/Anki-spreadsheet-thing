@@ -22,15 +22,6 @@ def get_conjugations(words):
     with open('C:\\Projects\\Kamiya\\output\\output_adj.json', 'r', encoding='utf-8') as f:
         adj_conjugations = json.load(f)
 
-    conjugations_dict = {}
-    for word in words:
-        conjugations = []
-        if word in verb_conjugations:
-            conjugations.extend(verb_conjugations[word])
-        if word in adj_conjugations:
-            conjugations.extend(adj_conjugations[word])
-        conjugations_dict[word] = conjugations
-    return conjugations_dict
 
 def update_excel():
     try:
@@ -44,6 +35,7 @@ def update_excel():
         for i in range(2, last_row + 1):
             words = sheet.range(f'A{i}').value
             part_of_speech = sheet.range(f'H{i}').value or ""
+            skip_row = False  # Define 'skip_row' before using it in the loop
 
             for col in ['D', 'F']:
                 sentence = sheet.range(f'{col}{i}').value
@@ -69,22 +61,7 @@ def update_excel():
                         logging.debug(f"Row {i}, Column A value: {words}")
                         logging.info(f"Updated non-conjugated word in row {i}, column {col}")
             else:
-                conjugations_dict = get_conjugations(words.split(','))
-                if conjugations_dict:
-                    for col in ['D', 'F']:
-                        sentence = sheet.range(f'{col}{i}').value
-                        if sentence:
-                            for word, conjugation_list in conjugations_dict.items():
-                                for form in conjugation_list:
-                                    if form in sentence:
-                                        sentence = sentence.replace(form, f'<strong>{form}</strong>')
-                            logging.debug(f"Setting value in Excel at column {col}, row {i}: {sentence}")
-                            sheet.range(f'{col}{i}').value = sentence
-                            logging.debug(f"Row {i}, Column A value: {words}")
-                            logging.info(f"Updated conjugations for word in row {i}, column {col}")
-                else:
-                    logging.warning(f"No conjugations found for word '{words}' in row {i}")
-
+                
         # Save changes to the workbook
         wb.save()
         logging.info("Excel workbook saved successfully.")
