@@ -1,0 +1,38 @@
+[
+  {
+    "word": "安い",
+    "conjugations": {
+      "Negative": "安くない",
+      "Conditional": "安ければ",
+      "Tari": "安かったり",
+      "Present": "安い",
+      "Prenomial": "安い",
+      "Past": "安かった",
+      "NegativePast": "安くなかった",
+      "ConjunctiveTe": "安く, 安くて",
+      "Adverbial": "安く",
+      "TaraConditional": "安かったら",
+      "Noun": "安さ",
+      "StemSou": "安そう",
+      "StemNegativeSou": "安くなさそう"
+    }
+  },
+  {
+    "word": "いい",
+    "conjugations": {
+      "Negative": "よくない",
+      "Conditional": "よければ",
+      "Tari": "よかったり",
+      "Present": "いい",
+      "Prenomial": "いい",
+      "Past": "よかった",
+      "NegativePast": "よくなかった",
+      "ConjunctiveTe": "よく, よくて",
+      "Adverbial": "よく",
+      "TaraConditional": "よかったら",
+      "Noun": "よさ",
+      "StemSou": "よさそう",
+      "StemNegativeSou": "よくなさそう"
+    }
+  }
+]
